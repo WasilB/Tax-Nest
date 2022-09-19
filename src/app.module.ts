@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TaxModule } from './components/tax/tax/tax.module';
 import { TaxGroupModule } from './components/taxGroup/tax-group/tax-group.module';
+import { ChatGateway } from './Gateway/gateway';
 
 @Module({
   imports: [
@@ -18,12 +19,12 @@ import { TaxGroupModule } from './components/taxGroup/tax-group/tax-group.module
       // database: process.env.POSTGRES_DATABASE,
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     TaxModule,
     TaxGroupModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ChatGateway],
 })
 export class AppModule {}

@@ -20,7 +20,7 @@ export class TaxService {
   }
 
   createTax(taxDTO: any): Observable<TaxDTO> {
-    socket.emit('message');
+    socket.emit('message', 'Hi DB updated');
     return from(this.taxModel.save(taxDTO));
   }
 
